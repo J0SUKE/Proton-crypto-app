@@ -4,9 +4,11 @@
 }
 
 $main-bg-dark : #1B1C22;
+$mid-blue : #323546;
 $color-font-main :white;
 $green-positive : #16B77B;
 $red-negative : #EA3943;
+
 
 *,*::before,*::after
 {
@@ -81,21 +83,41 @@ header
                 height: 1.5rem;
                 font-size: .9rem;
                 padding: .5rem;
-                background: #323546;
+                background: $mid-blue;
                 border-radius: .2rem;
                 color: darkgray;
                 font-weight: 600;
             }
         }
 
+        .price-header
+        {
+            margin: 3vmin 0 .5vmin 0;
+            font-size: .9rem;
+            color: darkgray;
+        }
         .crypto-price
         {
-            margin: 2vmin 0;
             display: flex;
             align-items: center;
+            margin: 1vmin 0;
             h1{
                 font-size: 4rem;
                 font-weight: 900;
+            }
+            p:nth-child(3)
+            {
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                height: 1.5rem;
+                font-size: .9rem;
+                padding: .5rem;
+                background: $mid-blue;
+                border-radius: .2rem;
+                color: darkgray;
+                font-weight: 600;
+                margin-left: 1rem;
             }
             span{
                 display: inline-flex;
@@ -154,12 +176,181 @@ header
             display: flex;
             justify-content: space-between;
             font-size: .9rem;
+            margin: 2vmin 0;
             .low,.high{
                 color: darkgray;
+                
                 span{
                     font-size: 1.2rem;
+                    font-weight: 900;
                 }
             }
         }
+    }
+
+    &__right
+    {
+        form{
+            width: 380px;
+            height: 55px;
+            display: flex;
+            background: #212430;
+            position: relative;
+            border-radius: 10px;
+            span:nth-child(1){
+                height: 100%;
+                width: 40px;
+                display: block;
+                position: relative;
+                &::before
+                {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    height: 15px;
+                    width: 15px;
+                    border: 2px solid rgb(99, 99, 99);
+                    border-radius: 50%;
+                    background: #212430;
+                    z-index: 1;
+                }
+                &::after
+                {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 60%;
+                    width: 2px;
+                    height: 13px;
+                    transform-origin: center;
+                    transform: rotate(-45deg);
+                    background-color: rgb(99, 99, 99);
+                    z-index: 0;
+                }
+            }
+
+            input{
+                height: 100%;
+                width: 100%;
+                background: transparent;
+                outline: none;
+                border: none;
+                font-size: 1.2rem;
+                padding: 0 .5rem;
+                position: relative;
+            }
+
+            menu{
+                display: none;
+                position: absolute;
+                top: 39px;
+                left: 0;
+                width: 100%;
+                background: #212430;
+                border-radius: 10px;
+                padding: 1rem 0;
+
+                .search-menu
+                {
+                    width: 95%;
+                    margin: auto;
+                    max-height: 300px;
+                    overflow-y: scroll;
+                    &::-webkit-scrollbar {
+                        width: 5px;
+                    }
+                    
+                    /* Track */
+                    &::-webkit-scrollbar-track {
+                        background:transparent;
+                    }
+                    
+                    /* Handle */
+                    &::-webkit-scrollbar-thumb {
+                        background: #323546;
+                        border-radius: 2.5px;
+                    }    
+                }
+
+                /* width */
+                
+            
+                .search-rec
+                {
+                    width: 100%;
+                    height: 30px;
+                    padding: 1.2rem 1rem;
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                    img{
+                        width: 20px;
+                        height: 20px;
+                    }
+
+                    .search-rec__name
+                    {
+                        font-weight: 900;
+                        margin: 0 .5rem;
+                    }
+
+                    .search-rec__id
+                    {
+                        font-size: .7rem;
+                        font-weight: 800;
+                        color: darkgray;
+                    }
+                }
+            }
+
+        }
+        
+    }
+}
+
+.graph__section
+{
+    &__options
+    {
+        display: flex;
+        height: 40px;
+        margin: 5vmin 0;
+        ul{
+            display: flex;
+            height: 100%;
+            min-width: 350px;
+            max-width: 350px;
+            align-items: center;
+            justify-content: space-between;
+            background: $mid-blue;
+            border-radius: 7px;
+            padding: 0 .2rem;
+            li{
+                font-weight: 900;
+                height: 90%;
+                width: 3rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: .3rem;
+                cursor: pointer;
+                color: darkgray;
+                &.selected
+                {
+                    background: #212430;
+                }
+                &:hover
+                {
+                    background: #212430;
+                }
+            }
+        }
+    }
+    
+    &__content
+    {
+        width: 80%;
     }
 }

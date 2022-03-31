@@ -29,12 +29,14 @@
                     <h1>Bitcoin</h1>
                     <span>BTC</span>
                 </div>
+                <p class="price-header">Bitcoin Price (BTC)</p>
                 <div class="crypto-price">
                     <h1>$45,919.05</h1>
                     <span data-evolution="negative">
                         <div class="tip"></div>
                         <p>2.99%</p>
                     </span>
+                    <p>24h</p>
                 </div>
                 <div class="ohclv">
                     <div class="low">
@@ -46,10 +48,38 @@
                     </div>
                 </div>
             </div>
+
+            <div class="crypto-section__content__right">
+                <form>
+                    <span></span>
+                    <input type="text" placeholder="search for a crypto" spellcheck="false">
+                    <menu>
+                        <div class="search-menu">
+                            <div class="search-rec">
+                                <img src="https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_512/4caf2b16a0174e26a3482cea69c34cba.png" alt="">
+                                <p class="search-rec__name">Bitcoin</p>
+                                <span class="search-rec__id">BTC</span>
+                            </div>
+                        </div>
+                    </menu>
+                </form>
+            </div>
         </div>
     </section>
 
     <section class="graph__section">
+        
+        <div class="graph__section__options">
+            <ul>
+                <li class="selected">1D</li>
+                <li>7D</li>
+                <li>1M</li>
+                <li>6M</li>
+                <li>1Y</li>
+            </ul>
+
+            <span>USD</span>
+        </div>
         <div class="graph__section__content">
             <canvas id="Chart"></canvas>    
         </div>
