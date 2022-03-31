@@ -1,0 +1,165 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url("../assets/Montserrat/Montserrat-VariableFont_wght.ttf"),
+}
+
+$main-bg-dark : #1B1C22;
+$color-font-main :white;
+$green-positive : #16B77B;
+$red-negative : #EA3943;
+
+*,*::before,*::after
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    font-family: "Montserrat";
+    color: $color-font-main;
+}
+a{
+    text-decoration: none;
+    font-family: inherit;
+    color: inherit;
+}
+
+body{
+    background: $main-bg-dark;
+}
+
+section,header
+{
+    width: 95%;
+    max-width: 1180px;
+    margin: auto;
+}
+
+header
+{
+    
+    .header
+    {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 90px;
+        margin: auto;
+        .navbar
+        {
+            display: flex;
+            justify-content: space-between;
+            min-width: 300px;
+        }
+    }
+    
+}
+
+.crypto-section__content
+{
+    width: 100%;
+    margin: 8vmin 0;
+    display: flex;
+    justify-content: space-between;
+    &__left
+    {
+        .crypto-name
+        {
+            display: flex;
+            align-items: center;
+            img{
+                height: 40px;
+                width: auto;
+            }
+            h1{
+                font-size: 3rem;
+                margin: 0 1rem;
+            }
+            span{
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                height: 1.5rem;
+                font-size: .9rem;
+                padding: .5rem;
+                background: #323546;
+                border-radius: .2rem;
+                color: darkgray;
+                font-weight: 600;
+            }
+        }
+
+        .crypto-price
+        {
+            margin: 2vmin 0;
+            display: flex;
+            align-items: center;
+            h1{
+                font-size: 4rem;
+                font-weight: 900;
+            }
+            span{
+                display: inline-flex;
+                align-items: center;
+                justify-content: space-between;
+                position: relative;
+                box-sizing: content-box;
+                font-size: 1.3rem;
+                height: 1rem;
+                margin-left: 2rem;
+                padding: .7rem 1rem;
+                border-radius: .3rem;
+                font-weight: 900;
+                .tip{
+                    width: 20px;
+                    height: 9px;
+                }
+
+                &::before
+                {
+                    content: "";
+                    position: absolute;
+                    left: .8rem;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    border-radius: 1px;
+                }
+
+                &[data-evolution="negative"]
+                {
+                    background: $red-negative;
+                    &::before
+                    {
+                        border-left: 8px solid transparent;
+                        border-right: 8px solid transparent;
+                        border-top: 8px solid white;
+                    }
+                }
+                &[data-evolution="positive"]
+                {
+                    background: $green-positive;
+                    &::before
+                    {
+                        border-left: 8px solid transparent;
+                        border-right: 8px solid transparent;
+                        border-bottom: 8px solid white;
+                    }
+                }
+
+            }
+        }
+
+        .ohclv
+        {
+            width: 300px;
+            display: flex;
+            justify-content: space-between;
+            font-size: .9rem;
+            .low,.high{
+                color: darkgray;
+                span{
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,194 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("../assets/Montserrat/Montserrat-VariableFont_wght.ttf");
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  list-style-type: none;
+  font-family: "Montserrat";
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  font-family: inherit;
+  color: inherit;
+}
+
+body {
+  background: #1B1C22;
+}
+
+section, header {
+  width: 95%;
+  max-width: 1180px;
+  margin: auto;
+}
+
+header .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 90px;
+  margin: auto;
+}
+
+header .header .navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  min-width: 300px;
+}
+
+.crypto-section__content {
+  width: 100%;
+  margin: 8vmin 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.crypto-section__content__left .crypto-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.crypto-section__content__left .crypto-name img {
+  height: 40px;
+  width: auto;
+}
+
+.crypto-section__content__left .crypto-name h1 {
+  font-size: 3rem;
+  margin: 0 1rem;
+}
+
+.crypto-section__content__left .crypto-name span {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 1.5rem;
+  font-size: .9rem;
+  padding: .5rem;
+  background: #323546;
+  border-radius: .2rem;
+  color: darkgray;
+  font-weight: 600;
+}
+
+.crypto-section__content__left .crypto-price {
+  margin: 2vmin 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.crypto-section__content__left .crypto-price h1 {
+  font-size: 4rem;
+  font-weight: 900;
+}
+
+.crypto-section__content__left .crypto-price span {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  font-size: 1.3rem;
+  height: 1rem;
+  margin-left: 2rem;
+  padding: .7rem 1rem;
+  border-radius: .3rem;
+  font-weight: 900;
+}
+
+.crypto-section__content__left .crypto-price span .tip {
+  width: 20px;
+  height: 9px;
+}
+
+.crypto-section__content__left .crypto-price span::before {
+  content: "";
+  position: absolute;
+  left: .8rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  border-radius: 1px;
+}
+
+.crypto-section__content__left .crypto-price span[data-evolution="negative"] {
+  background: #EA3943;
+}
+
+.crypto-section__content__left .crypto-price span[data-evolution="negative"]::before {
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid white;
+}
+
+.crypto-section__content__left .crypto-price span[data-evolution="positive"] {
+  background: #16B77B;
+}
+
+.crypto-section__content__left .crypto-price span[data-evolution="positive"]::before {
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid white;
+}
+
+.crypto-section__content__left .ohclv {
+  width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: .9rem;
+}
+
+.crypto-section__content__left .ohclv .low, .crypto-section__content__left .ohclv .high {
+  color: darkgray;
+}
+
+.crypto-section__content__left .ohclv .low span, .crypto-section__content__left .ohclv .high span {
+  font-size: 1.2rem;
+}
+/*# sourceMappingURL=style.css.map */
