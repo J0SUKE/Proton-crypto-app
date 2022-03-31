@@ -78,7 +78,7 @@ function getCryptoIcon(assetId) {
 // getIcon(40)
 // .then(a=>icons=[...a])
 // .then(()=>{
-//     console.log(getCryptoIcon("BTC"));
+//     console.log(getCryptoIcon("USD"));
 // })
 
 let now = new Date;

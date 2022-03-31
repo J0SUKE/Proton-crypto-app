@@ -63,12 +63,28 @@
                         </div>
                     </menu>
                 </form>
+
+                <div class="crypto-info-right">
+                    <ul>
+                        <li>
+                            <span>Volume 1hour</span>
+                            <p>$32,420,649,061</p>
+                        </li>
+                        <li>
+                            <span>Volume 24Hours</span>
+                            <p>$868,017,164,563</p>
+                        </li>
+                        <li>
+                            <span>Volume 1Month</span>
+                            <p>18,999,112.00 BTC</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="graph__section">
-        
         <div class="graph__section__options">
             <ul>
                 <li class="selected">1D</li>
@@ -78,13 +94,43 @@
                 <li>1Y</li>
             </ul>
 
-            <span>USD</span>
+            <div class="currency">
+                <img src="https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_512/0a4185f21a034a7cb866ba7076d8c73b.png" alt="">
+                <span>USD</span>    
+            </div>
         </div>
         <div class="graph__section__content">
             <canvas id="Chart"></canvas>    
         </div>
-        
     </section>
+
+    <section class="converter">
+        <div class="converter__content">
+            <input type="number" placeholder="BTC">
+            <input type="number" placeholder="USD">
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer">
+            <div class="footer__left">
+                <h1>Proton</h1>
+            </div>
+            <div class="footer__right">
+                <ul>
+                    <h2>Ressources</h2>
+                    <li><a href="https://docs.coinapi.io/#md-docs">Crypto Api</a></li><br/>
+                    <li><a href="https://coinmarketcap.com/">Inspiration</a></li><br>
+                    <li><a href="https://github.com/J0SUKE/Proton-crypto-app">Source Code</a></li>
+                </ul>
+                <ul>
+                    <h2>Contact</h2>
+                    <li><a href="https://twitter.com/Jean_M_____I">Twitter</a></li><br/>
+                    <li><a href="https://github.com/J0SUKE">Github</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
