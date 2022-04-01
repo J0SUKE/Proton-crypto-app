@@ -30,7 +30,7 @@ section, header, footer {
   margin: auto;
 }
 
-header .header {
+.header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -44,7 +44,22 @@ header .header {
   margin: auto;
 }
 
-header .header .navbar {
+.header .logo h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .logo h1 img {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  padding-right: 1rem;
+}
+
+.header .navbar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -55,18 +70,18 @@ header .header .navbar {
 }
 
 @media screen and (max-width: 470px) {
-  header .header .navbar {
+  .header .navbar {
     display: none;
   }
 }
 
-header .header .navbar li {
+.header .navbar li {
   display: inline-block;
   position: relative;
   cursor: pointer;
 }
 
-header .header .navbar li::after {
+.header .navbar li::after {
   content: "";
   position: absolute;
   height: 1px;
@@ -84,7 +99,7 @@ header .header .navbar li::after {
   transition: transform .3s, -webkit-transform .3s;
 }
 
-header .header .navbar li:hover::after {
+.header .navbar li:hover::after {
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
 }
@@ -430,7 +445,7 @@ header .header .navbar li:hover::after {
   margin-top: .5rem;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
   .crypto-section__content {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -605,6 +620,19 @@ header .header .navbar li:hover::after {
   margin-left: 2rem;
 }
 
+@media screen and (max-width: 550px) {
+  .converter__content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .converter__content input:nth-child(2) {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+}
+
 .footer {
   border-top: 1px solid #222531;
   margin-top: 9vmin;
@@ -615,6 +643,41 @@ header .header .navbar li:hover::after {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.footer__left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.footer__left h1 {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  padding-bottom: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer__left h1 img {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  padding-right: 1rem;
+}
+
+.footer__left p {
+  color: darkgray;
 }
 
 .footer__right {
