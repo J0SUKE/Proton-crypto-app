@@ -9,6 +9,7 @@ $color-font-main :white;
 $green-positive : #16B77B;
 $red-negative : #EA3943;
 $border : #222531;
+$font-blue : #5B7EEC;
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -403,6 +404,7 @@ section,header,footer
                         color: darkgray;
                     }
                 }
+
             }
 
         }
@@ -460,6 +462,20 @@ section,header,footer
     p{
         color: darkgray;
     }
+}
+
+.seeAll
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    p{
+        color: $font-blue;
+        font-weight: 900;
+        cursor: pointer;
+    }
+    
 }
 
 .graph__section

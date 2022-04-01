@@ -7,7 +7,7 @@ let domain = "https://rest.coinapi.io/v1";
 let mykey =  "ADA14CA8-B2A6-4594-A598-2D0B1DCB467B";
 let mykey2 =  "FF285EA9-E9A5-40AA-B797-0F2B7661B44D";
 let mykey3 = "238E7235-207C-403F-9A4F-DCC5405550BB";
-//let mykey4 = "59BA3C4B-744E-4B96-98D5-0B3D23311087";
+let mykey4 = "59BA3C4B-744E-4B96-98D5-0B3D23311087";
 
 let currency={
     name:"USD",
@@ -17,7 +17,7 @@ let currency={
 var myheaders = new Headers();
 myheaders.append("Accept","application/json");
 myheaders.append("Accept-Encoding","deflate, gzip");
-myheaders.append("X-CoinAPI-Key",mykey3);
+myheaders.append("X-CoinAPI-Key",mykey4);
 
 let fetchInit = {
     method:"GET",
@@ -53,7 +53,7 @@ function getRateInPeriod(idBase,idQuote,start,end,interval) {
 }
 
 export function getCryptoIcon(assetId) {
-    return icons.filter(element=>element.asset_id==assetId)[0].url;
+    return icons.filter(element=>element.asset_id==assetId);
 }
 
 function getAllData(asset_id)
@@ -61,7 +61,7 @@ function getAllData(asset_id)
     getAssets(asset_id)
     .then(a=>{
         isloading=true;
-        let loadedIcon =getCryptoIcon(a[0].asset_id);
+        let loadedIcon =getCryptoIcon(a[0].asset_id)[0].url;
         currentCrypto = a[0].asset_id;
         
         storedCryptos[currentCrypto] = {
