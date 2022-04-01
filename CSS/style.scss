@@ -10,6 +10,20 @@ $green-positive : #16B77B;
 $red-negative : #EA3943;
 $border : #222531;
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background:$border;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #323546;
+}    
+
 
 *,*::before,*::after
 {
@@ -30,6 +44,16 @@ body{
     //background: $main-bg-dark;
     background: linear-gradient(180deg, rgba(33,36,48,1) 0%, rgba(23,23,26,1) 34%);
 }
+
+input[type="number"] {
+    -webkit-appearance: textfield;
+       -moz-appearance: textfield;
+            appearance: textfield;
+  }
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+  }
 
 section,header,footer
 {
@@ -97,12 +121,29 @@ section,header,footer
 
     
 }
+.crypto-section
+{
+    position: relative;
+}
+
+
+
+.crypto-section__loader
+{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .crypto-section__content
 {
     width: 100%;
     margin: 8vmin 0;
-    display: flex;
+    display: flex;  
     justify-content: space-between;
     padding-bottom: 5vmin;
     box-sizing: content-box;
@@ -301,7 +342,6 @@ section,header,footer
             }
 
             menu{
-                display: none;
                 position: absolute;
                 top: 39px;
                 left: 0;
@@ -411,6 +451,7 @@ section,header,footer
 
 .graph__section
 {
+    position: relative;
     &__options
     {
         //width: 80%;
@@ -501,7 +542,6 @@ section,header,footer
     
     &__content
     {
-        //width: 80%;
         width: 100%;
         min-width: 360px;
         @media screen and(max-width:800px) {
@@ -509,6 +549,18 @@ section,header,footer
             width: 100%;
             min-width: 100%;
         }
+    }
+
+    &__loader
+    {
+        position: absolute;
+        top: 100px;
+        left: 0;
+        width: 100%;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -625,3 +677,70 @@ section,header,footer
         }
     }
 }
+
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }
+  
+
+  .transparent
+  {
+      opacity: 0;
+  }
+
+  .inactive
+  {
+      display: none;
+  }
