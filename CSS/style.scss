@@ -343,6 +343,8 @@ section,header,footer
 
             menu{
                 position: absolute;
+                z-index: 2;
+
                 top: 39px;
                 left: 0;
                 width: 100%;
@@ -446,6 +448,17 @@ section,header,footer
                 display: none;
             }
         }
+    }
+}
+
+.no-results
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    p{
+        color: darkgray;
     }
 }
 

@@ -400,6 +400,7 @@ section, header, footer {
 
 .crypto-section__content__right form menu {
   position: absolute;
+  z-index: 2;
   top: 39px;
   left: 0;
   width: 100%;
@@ -505,6 +506,23 @@ section, header, footer {
   .crypto-section__content .crypto-section__content__right .crypto-info-right {
     display: none;
   }
+}
+
+.no-results {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 50px;
+}
+
+.no-results p {
+  color: darkgray;
 }
 
 .graph__section {

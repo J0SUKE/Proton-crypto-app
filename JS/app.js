@@ -31,8 +31,8 @@ function FETCH(addr) {
 
 let OHCLVperiods = ["1SEC","2SEC","3SEC","4SEC","5SEC","6SEC","10SEC","15SEC","20SEC","30SEC","1MIN","2MIN","3MIN","4MIN","5MIN","6MIN","10MIN","15MIN","20MIN","30MIN","1HRS","2HRS","3HRS","4HRS","6HRS","8HRS","12HRS","1DAY","2DAY","3DAY","5DAY","7DAY","10DAY","1MTH","2MTH","3MTH","4MTH","6MTH","1YRS","2YRS","3YRS","4YRS","5YRS"];
 
-let icons; // tableau d'objets avec des liens vers les icons dans icons[i].url
-let assets; // tableau de toutes les cryptos et monnaies
+export let icons; // tableau d'objets avec des liens vers les icons dans icons[i].url
+export let assets; // tableau de toutes les cryptos et monnaies
 
 function getAssets(id) {
     let call;
@@ -52,7 +52,7 @@ function getRateInPeriod(idBase,idQuote,start,end,interval) {
     return FETCH(apiCall);
 }
 
-function getCryptoIcon(assetId) {
+export function getCryptoIcon(assetId) {
     return icons.filter(element=>element.asset_id==assetId)[0].url;
 }
 
@@ -158,15 +158,18 @@ let now = new Date();
 let loaders = [qs(".crypto-section__loader") , qs(".graph__section__loader")];
 let dataContainers = [qs(".crypto-section__content") , qs(".graph__section__content")];
 
-// getIcon(40)
-// .then(a=>icons=[...a])
-// .then(()=>getAllData(currentCrypto))
+getAssets().then(a=>a.filter(element=>element.type_is_crypto).map(element=>({"id":element.asset_id,"name":element.name})))
+.then((a)=>assets=[...a])
+.then(()=>getIcon(40))
+.then(a=>icons=[...a])
+.then(()=>getAllData(currentCrypto))
 
 let periodButtons = qsa(".graph__section__options ul li");
 let isloading=true;
 
 periodButtons.forEach(element => {
-    element.addEventListener("click",()=>{
+    element.addEventListener("click",(e)=>{
+        e.stopImmediatePropagation();
         if(!element.classList.contains("selected") && !isloading)
         {
             periodButtons.filter(e=>e!=element).forEach(e => {
@@ -183,3 +186,4 @@ periodButtons.forEach(element => {
         }
     })
 });
+
