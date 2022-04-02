@@ -4,23 +4,14 @@ import { qs,qsa,fillDataOnpage,createHTMLelement } from "./domUtil.js";
 
 
 let domain = "https://rest.coinapi.io/v1";
-let mykey  = "ADA14CA8-B2A6-4594-A598-2D0B1DCB467B";
-let mykey2 = "FF285EA9-E9A5-40AA-B797-0F2B7661B44D";
-let mykey3 = "238E7235-207C-403F-9A4F-DCC5405550BB";
-let mykey4 = "59BA3C4B-744E-4B96-98D5-0B3D23311087";
-let mykey5 = "FA0EDA4C-C135-4ED4-B197-3773DA2480A4";
 
-let mykey7 = "FE3C3481-8A6B-4619-B3CF-911492CA3BB6";
-let mykey8 = "ABEE0115-732D-44FF-9D2A-13D0FB9EB371";
-let mykey9 = "ACABB7E9-F091-425B-8291-2EBFF364ECF3";
-let mykey10 = "77DBD5E3-BF80-406E-B442-FFD961AA03B7";
-let mykey11 = "33EA2CA7-62CF-4F42-BE48-E39EF49EFFA9";
+let mykey = "33EA2CA7-62CF-4F42-BE48-E39EF49EFFA9";
 
 
 var myheaders = new Headers();
 myheaders.append("Accept","application/json");
 myheaders.append("Accept-Encoding","deflate, gzip");
-myheaders.append("X-CoinAPI-Key",mykey11);
+myheaders.append("X-CoinAPI-Key",mykey);
 
 let fetchInit = {
     method:"GET",
