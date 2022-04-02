@@ -80,6 +80,8 @@ export function getAllData(asset_id)
         let loadedIcon =getCryptoIcon(a[0].asset_id)[0].url;
         currentCrypto = a[0].asset_id;
         
+        currentRate=a[0].price_usd;
+
         storedCryptos[currentCrypto] = {
             asset_id: a[0].asset_id,
             name: a[0].name,
@@ -133,8 +135,6 @@ function getDataAccordingToPeriod(asset_id,period) {
         qs(".graph__section__content").append(createHTMLelement("canvas","",{id:"Chart"},""));
         draw(prices,times);
 
-        //console.log(storedCryptos[currentCrypto]);
-        console.log(a);
         if(a.length!=0)
         {
             storedCryptos[currentCrypto].variation = getVariation(prices[prices.length-1],prices[0]);
@@ -182,6 +182,7 @@ function getDataAccordingToPeriod(asset_id,period) {
 let storedCryptos = {}
 let currentCrypto="BTC";
 let currentPeriod="1D";
+export let currentRate;
 let now = new Date();
 
 

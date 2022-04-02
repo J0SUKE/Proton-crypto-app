@@ -102,11 +102,6 @@
                 <li data-period="6M">6M</li>
                 <li data-period="1Y">1Y</li>
             </ul>
-
-            <div class="currency">
-                <img src="https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_512/0a4185f21a034a7cb866ba7076d8c73b.png" alt="">
-                <span>USD</span>    
-            </div>
         </div>
         <div class="graph__section__loader">
             <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
@@ -118,8 +113,8 @@
 
     <section class="converter">
         <div class="converter__content">
-            <input type="number">
-            <input type="number" placeholder="USD">
+            <input data-inputCurrency="crypto" type="number">
+            <input data-inputCurrency="currency" type="number" placeholder="USD">
         </div>
     </section>
 
@@ -151,5 +146,6 @@
 <script type="module" src="./JS/search.js"></script>
 <script type="module" src="./JS/graphics.js"></script>
 <script type="module" src="./JS/app.js"></script>
+<script type="module" src="./JS/converter.js"></script>
 
 </html>
