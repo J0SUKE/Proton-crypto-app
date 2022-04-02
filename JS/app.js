@@ -4,10 +4,19 @@ import { qs,qsa,fillDataOnpage,createHTMLelement } from "./domUtil.js";
 
 
 let domain = "https://rest.coinapi.io/v1";
-let mykey =  "ADA14CA8-B2A6-4594-A598-2D0B1DCB467B";
-let mykey2 =  "FF285EA9-E9A5-40AA-B797-0F2B7661B44D";
+let mykey  = "ADA14CA8-B2A6-4594-A598-2D0B1DCB467B";
+let mykey2 = "FF285EA9-E9A5-40AA-B797-0F2B7661B44D";
 let mykey3 = "238E7235-207C-403F-9A4F-DCC5405550BB";
 let mykey4 = "59BA3C4B-744E-4B96-98D5-0B3D23311087";
+let mykey5 = "FA0EDA4C-C135-4ED4-B197-3773DA2480A4";
+
+let mykey7 = "FE3C3481-8A6B-4619-B3CF-911492CA3BB6";
+let mykey8 = "ABEE0115-732D-44FF-9D2A-13D0FB9EB371";
+let mykey9 = "ACABB7E9-F091-425B-8291-2EBFF364ECF3";
+let mykey10 = "77DBD5E3-BF80-406E-B442-FFD961AA03B7";
+let mykey11 = "33EA2CA7-62CF-4F42-BE48-E39EF49EFFA9";
+
+
 
 let currency={
     name:"USD",
@@ -17,7 +26,7 @@ let currency={
 var myheaders = new Headers();
 myheaders.append("Accept","application/json");
 myheaders.append("Accept-Encoding","deflate, gzip");
-myheaders.append("X-CoinAPI-Key",mykey4);
+myheaders.append("X-CoinAPI-Key",mykey8);
 
 let fetchInit = {
     method:"GET",
@@ -56,8 +65,15 @@ export function getCryptoIcon(assetId) {
     return icons.filter(element=>element.asset_id==assetId);
 }
 
-function getAllData(asset_id)
+export function getAllData(asset_id)
 {
+    loaders.forEach(element => {
+        element.classList.remove("inactive");
+    });
+    dataContainers.forEach(element => {
+        element.classList.add("transparent");
+    });
+    
     getAssets(asset_id)
     .then(a=>{
         isloading=true;
@@ -117,9 +133,23 @@ function getDataAccordingToPeriod(asset_id,period) {
         qs(".graph__section__content").append(createHTMLelement("canvas","",{id:"Chart"},""));
         draw(prices,times);
 
-        storedCryptos[currentCrypto].variation = getVariation(prices[prices.length-1],prices[0]);
-        storedCryptos[currentCrypto].price_low = a[a.length-1].rate_low;
-        storedCryptos[currentCrypto].price_high = a[a.length-1].rate_high;
+        //console.log(storedCryptos[currentCrypto]);
+        console.log(a);
+        if(a.length!=0)
+        {
+            storedCryptos[currentCrypto].variation = getVariation(prices[prices.length-1],prices[0]);
+            storedCryptos[currentCrypto].price_low = a[a.length-1].rate_low;
+            storedCryptos[currentCrypto].price_high = a[a.length-1].rate_high;
+        }
+        else
+        {
+            storedCryptos[currentCrypto].variation = 0;
+            storedCryptos[currentCrypto].price_low = 0;
+            storedCryptos[currentCrypto].price_high = 0;
+        }
+
+
+        
     }).then(()=>{
 
         fillDataOnpage(
@@ -158,11 +188,12 @@ let now = new Date();
 let loaders = [qs(".crypto-section__loader") , qs(".graph__section__loader")];
 let dataContainers = [qs(".crypto-section__content") , qs(".graph__section__content")];
 
-getAssets().then(a=>a.filter(element=>element.type_is_crypto).map(element=>({"id":element.asset_id,"name":element.name})))
+getAssets().then(a=>a.filter(element=>element.type_is_crypto && element.price_usd!=undefined && element.volume_1day_usd!=undefined && element.volume_1hrs_usd!=undefined && element.volume_1mth_usd!=undefined).map(element=>({"id":element.asset_id,"name":element.name})))
 .then((a)=>assets=[...a])
 .then(()=>getIcon(40))
 .then(a=>icons=[...a])
 .then(()=>getAllData(currentCrypto))
+//.catch(()=>alert("incomplete data for this crypto"));
 
 let periodButtons = qsa(".graph__section__options ul li");
 let isloading=true;
@@ -186,4 +217,3 @@ periodButtons.forEach(element => {
         }
     })
 });
-

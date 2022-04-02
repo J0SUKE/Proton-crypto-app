@@ -49,10 +49,14 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
 
-section, header, footer {
+section, .header, footer {
   width: 95%;
   max-width: 1180px;
   margin: auto;
+}
+
+header {
+  width: 100%;
 }
 
 .header {
@@ -65,7 +69,7 @@ section, header, footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 90px;
+  min-height: 90px;
   margin: auto;
 }
 
@@ -84,49 +88,181 @@ section, header, footer {
   padding-right: 1rem;
 }
 
-.header .navbar {
+.header form {
+  max-width: 380px;
+  width: 95%;
+  min-width: 350px;
+  height: 55px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  min-width: 300px;
-}
-
-@media screen and (max-width: 470px) {
-  .header .navbar {
-    display: none;
-  }
-}
-
-.header .navbar li {
-  display: inline-block;
+  background: #171924;
   position: relative;
-  cursor: pointer;
+  border-radius: 10px;
 }
 
-.header .navbar li::after {
+.header form span:nth-child(1) {
+  height: 100%;
+  width: 40px;
+  display: block;
+  position: relative;
+}
+
+.header form span:nth-child(1)::before {
   content: "";
   position: absolute;
-  height: 1px;
-  background: white;
-  width: 100%;
-  left: 0;
-  bottom: -1px;
-  -webkit-transform-origin: left;
-          transform-origin: left;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  -webkit-transition: -webkit-transform .3s;
-  transition: -webkit-transform .3s;
-  transition: transform .3s;
-  transition: transform .3s, -webkit-transform .3s;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  height: 15px;
+  width: 15px;
+  border: 2px solid #636363;
+  border-radius: 50%;
+  background: #171924;
+  z-index: 1;
 }
 
-.header .navbar li:hover::after {
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
+.header form span:nth-child(1)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  width: 2px;
+  height: 13px;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  background-color: #636363;
+  z-index: 0;
+}
+
+.header form input {
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  outline: none;
+  border: none;
+  font-size: 1.2rem;
+  padding: 0 .5rem;
+  position: relative;
+}
+
+.header form menu {
+  position: absolute;
+  z-index: 2;
+  top: 39px;
+  left: 0;
+  width: 100%;
+  background: #171924;
+  border-radius: 10px;
+  padding: 1rem 0;
+  /* width */
+}
+
+.header form menu .search-menu {
+  width: 95%;
+  margin: auto;
+  max-height: 300px;
+  overflow-y: scroll;
+  /* Track */
+  /* Handle */
+}
+
+.header form menu .search-menu::-webkit-scrollbar {
+  width: 5px;
+}
+
+.header form menu .search-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.header form menu .search-menu::-webkit-scrollbar-thumb {
+  background: #323546;
+  border-radius: 2.5px;
+}
+
+.header form menu .cryptoassets {
+  color: #7E839A;
+  width: 95%;
+  margin: auto;
+  padding: 1rem 1rem;
+  font-size: .8rem;
+  font-weight: 900;
+}
+
+.header form menu .search-history {
+  width: 95%;
+  margin: auto;
+}
+
+.header form menu .search-history p:nth-child(1) {
+  color: #7E839A;
+  width: 95%;
+  margin: auto;
+  padding: 1rem 1rem 0 .5rem;
+  font-size: .8rem;
+  font-weight: 900;
+}
+
+.header form menu .search-history ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem 1.2rem;
+}
+
+.header form menu .search-history li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 90px;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  padding-right: 2rem;
+}
+
+.header form menu .search-history li img {
+  width: 25px;
+}
+
+.header form menu .search-history li p {
+  width: 100%;
+  max-width: 100%;
+  font-weight: 900;
+  margin: .5rem 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header form menu .search-history li span {
+  font-size: .6rem;
+  color: darkgray;
+}
+
+@media screen and (max-width: 630px) {
+  .header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .header form {
+    margin: 5vmin 0;
+  }
 }
 
 .crypto-section {
@@ -339,128 +475,6 @@ section, header, footer {
   padding-right: 1rem;
 }
 
-.crypto-section__content__right form {
-  width: 380px;
-  height: 55px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  background: #212430;
-  position: relative;
-  border-radius: 10px;
-}
-
-.crypto-section__content__right form span:nth-child(1) {
-  height: 100%;
-  width: 40px;
-  display: block;
-  position: relative;
-}
-
-.crypto-section__content__right form span:nth-child(1)::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  height: 15px;
-  width: 15px;
-  border: 2px solid #636363;
-  border-radius: 50%;
-  background: #212430;
-  z-index: 1;
-}
-
-.crypto-section__content__right form span:nth-child(1)::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 60%;
-  width: 2px;
-  height: 13px;
-  -webkit-transform-origin: center;
-          transform-origin: center;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-  background-color: #636363;
-  z-index: 0;
-}
-
-.crypto-section__content__right form input {
-  height: 100%;
-  width: 100%;
-  background: transparent;
-  outline: none;
-  border: none;
-  font-size: 1.2rem;
-  padding: 0 .5rem;
-  position: relative;
-}
-
-.crypto-section__content__right form menu {
-  position: absolute;
-  z-index: 2;
-  top: 39px;
-  left: 0;
-  width: 100%;
-  background: #212430;
-  border-radius: 10px;
-  padding: 1rem 0;
-  /* width */
-}
-
-.crypto-section__content__right form menu .search-menu {
-  width: 95%;
-  margin: auto;
-  max-height: 300px;
-  overflow-y: scroll;
-  /* Track */
-  /* Handle */
-}
-
-.crypto-section__content__right form menu .search-menu::-webkit-scrollbar {
-  width: 5px;
-}
-
-.crypto-section__content__right form menu .search-menu::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.crypto-section__content__right form menu .search-menu::-webkit-scrollbar-thumb {
-  background: #323546;
-  border-radius: 2.5px;
-}
-
-.crypto-section__content__right form menu .search-rec {
-  width: 100%;
-  height: 30px;
-  padding: 1.2rem 1rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  cursor: pointer;
-}
-
-.crypto-section__content__right form menu .search-rec img {
-  width: 20px;
-  height: 20px;
-}
-
-.crypto-section__content__right form menu .search-rec .search-rec__name {
-  font-weight: 900;
-  margin: 0 .5rem;
-}
-
-.crypto-section__content__right form menu .search-rec .search-rec__id {
-  font-size: .7rem;
-  font-weight: 800;
-  color: darkgray;
-}
-
 .crypto-section__content__right .crypto-info-right {
   width: 100%;
   display: -webkit-box;
@@ -506,6 +520,35 @@ section, header, footer {
   .crypto-section__content .crypto-section__content__right .crypto-info-right {
     display: none;
   }
+}
+
+.search-rec {
+  width: 100%;
+  height: 30px;
+  padding: 1.2rem 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.search-rec img {
+  width: 20px;
+  height: 20px;
+}
+
+.search-rec .search-rec__name {
+  font-weight: 900;
+  margin: 0 .5rem;
+}
+
+.search-rec .search-rec__id {
+  font-size: .7rem;
+  font-weight: 800;
+  color: darkgray;
 }
 
 .no-results {

@@ -10,6 +10,10 @@ export function formatPrice(price)
     let formatedPrice;
     if(price<1)
     {
+        if(price.toString().length>7)
+        {
+            return price.toString().slice(0,8)
+        }
         return price;
     }
     price=parseFloat(price.toFixed(2));
@@ -41,4 +45,14 @@ export function FormatTimeTochart(time,period) {
     if(period=="7D") return `${mois} ${jour} ${time.split("T")[1].slice(0,5)}`;
     return `${mois} ${jour}`;
 
+}
+
+export function getSize(obj) // calcula la taille d'un objet
+{   
+    let i=0;
+    for(let prop in obj)
+    {
+        i++;
+    }
+    return i;
 }
