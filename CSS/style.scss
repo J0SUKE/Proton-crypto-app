@@ -182,7 +182,7 @@ header
                 margin: auto;
                 padding: 1rem 1rem;
                 font-size: .8rem;
-                font-weight: 900;
+                font-weight: 500;
             }
             /* width */
 
@@ -197,7 +197,7 @@ header
                     margin: auto;
                     padding: 1rem 1rem 0 .5rem;
                     font-size: .8rem;
-                    font-weight: 900;
+                    font-weight: 600;
                     
                 }
                 ul{
@@ -221,7 +221,7 @@ header
                     p{
                         width: 100%;
                         max-width: 100%;
-                        font-weight: 900;
+                        font-weight: 700;
                         margin: .5rem 0;
                         overflow: hidden;
                         text-overflow: ellipsis;
@@ -313,7 +313,7 @@ header
             margin: 1vmin 0;
             h1{
                 font-size: 4rem;
-                font-weight: 900;
+                font-weight: 700;
             }
             p:nth-child(3)
             {
@@ -340,7 +340,7 @@ header
                 margin-left: 2rem;
                 padding: .7rem 1rem;
                 border-radius: .3rem;
-                font-weight: 900;
+                font-weight: 500;
                 .tip{
                     width: 20px;
                     height: 9px;
@@ -403,7 +403,7 @@ header
                 
                 span{
                     font-size: 1.2rem;
-                    font-weight: 900;
+                    font-weight: 500;
                 }
             }
         }
@@ -428,7 +428,7 @@ header
                 }
                 p{
                     font-size: 1.1rem;
-                    font-weight: 900;
+                    font-weight: 600;
                     margin-top: .5rem;
                 }
             }
@@ -474,7 +474,7 @@ header
 
     .search-rec__name
     {
-        font-weight: 900;
+        font-weight: 600;
         margin: 0 .5rem;
     }
 
@@ -505,7 +505,7 @@ header
     height: 50px;
     p{
         color: $font-blue;
-        font-weight: 900;
+        font-weight: 600;
         cursor: pointer;
     }
     
@@ -532,7 +532,7 @@ header
             border-radius: 7px;
             padding: 0 .2rem;
             li{
-                font-weight: 900;
+                font-weight: 600;
                 height: 90%;
                 width: 3rem;
                 display: flex;
@@ -572,7 +572,7 @@ header
             span{
                 display: inline-block;
                 margin-left: .5rem;
-                font-weight: 900;
+                font-weight: 600;
                 position: relative;
                 &::after
                 {
@@ -633,7 +633,7 @@ header
     {
         margin: 2rem 0;
         font-size: 1.5rem;
-        font-weight: 900;
+        font-weight: 600;
     }
 
     &__content

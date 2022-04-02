@@ -189,7 +189,7 @@ header {
   margin: auto;
   padding: 1rem 1rem;
   font-size: .8rem;
-  font-weight: 900;
+  font-weight: 500;
 }
 
 .header form menu .search-history {
@@ -203,7 +203,7 @@ header {
   margin: auto;
   padding: 1rem 1rem 0 .5rem;
   font-size: .8rem;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .header form menu .search-history ul {
@@ -242,7 +242,7 @@ header {
 .header form menu .search-history li p {
   width: 100%;
   max-width: 100%;
-  font-weight: 900;
+  font-weight: 700;
   margin: .5rem 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -356,7 +356,7 @@ header {
 
 .crypto-section__content__left .crypto-price h1 {
   font-size: 4rem;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .crypto-section__content__left .crypto-price p:nth-child(3) {
@@ -397,7 +397,7 @@ header {
   margin-left: 2rem;
   padding: .7rem 1rem;
   border-radius: .3rem;
-  font-weight: 900;
+  font-weight: 500;
 }
 
 .crypto-section__content__left .crypto-price span .tip {
@@ -468,7 +468,7 @@ header {
 
 .crypto-section__content__left .ohclv .low span, .crypto-section__content__left .ohclv .high span {
   font-size: 1.2rem;
-  font-weight: 900;
+  font-weight: 500;
 }
 
 .crypto-section__content__right {
@@ -500,7 +500,7 @@ header {
 
 .crypto-section__content__right .crypto-info-right li p {
   font-size: 1.1rem;
-  font-weight: 900;
+  font-weight: 600;
   margin-top: .5rem;
 }
 
@@ -541,7 +541,7 @@ header {
 }
 
 .search-rec .search-rec__name {
-  font-weight: 900;
+  font-weight: 600;
   margin: 0 .5rem;
 }
 
@@ -583,7 +583,7 @@ header {
 
 .seeAll p {
   color: #5B7EEC;
-  font-weight: 900;
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -621,7 +621,7 @@ header {
 }
 
 .graph__section__options ul li {
-  font-weight: 900;
+  font-weight: 600;
   height: 90%;
   width: 3rem;
   display: -webkit-box;
@@ -676,7 +676,7 @@ header {
 .graph__section__options .currency span {
   display: inline-block;
   margin-left: .5rem;
-  font-weight: 900;
+  font-weight: 600;
   position: relative;
 }
 
@@ -742,7 +742,7 @@ header {
 .converter p:first-child {
   margin: 2rem 0;
   font-size: 1.5rem;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .converter__content {
