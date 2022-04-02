@@ -260,6 +260,9 @@ header {
         -ms-flex-direction: column;
             flex-direction: column;
   }
+  .header .logo {
+    margin-top: 1rem;
+  }
   .header form {
     margin: 5vmin 0;
   }

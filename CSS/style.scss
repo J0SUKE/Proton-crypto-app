@@ -240,6 +240,10 @@ header
 
     @media screen and(max-width:630px) {
         flex-direction: column;
+        .logo
+        {
+            margin-top: 1rem;
+        }
         form{
             margin: 5vmin 0;
         }
