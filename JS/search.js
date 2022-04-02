@@ -5,9 +5,10 @@ import {getSize} from "./mathUtil.js";
 let recentSearches ={};
 
 
-export function search(input) {
+export function search(input) // vas faire des recherches et generer des propositions dans la barre de recherche
+{
     input=input.toLowerCase();
-    let results = [];
+    let results = [];// vas contenir les assets proposées 
     
     // si on a deja des propositions on doit tout supprimer (sinon les nouvelles propositions viendront se superposer aux anciennes)
     if(qsa(".search-rec").length!=0)
@@ -18,7 +19,6 @@ export function search(input) {
     }
     
     if (input.length==0 ){
-        //searchMenu.classList.add("inactive");  
         noResults.classList.add("inactive");
         seeAll.classList.add("inactive");
         pcryptoassets.classList.add("inactive");
@@ -42,7 +42,7 @@ export function search(input) {
         if(element["id"].slice(0,input.length).toLowerCase()==input || element["name"].slice(0,input.length).toLowerCase()==input )
         {
             //===on vas contabiliser uniquement les cryptos qui possedent une icone 
-            let ic = getCryptoIcon(element.id)
+            let ic = getCryptoIcon(element.id); // pour les cryptos qui n'en ont pas ceci vas renvoyer un tableau vide
             if(ic.length!=0)
             {
                 results.push(element);
@@ -52,7 +52,7 @@ export function search(input) {
     });    
 
     
-    let i=0;
+    let i=0; // on vas au depart n'afficher que 6 propositions 
     for (let j = 0; j < results.length; j++) {
         
         if (i<6) {
@@ -60,10 +60,12 @@ export function search(input) {
             i++;     
         }
         else createProposition(getCryptoIcon(results[j].id)[0].url , results[j].name,results[j].id,false);   ;        
+
+        // celles qui ont le dernier argument en false auront la classe inactive (display:none)
     }
 
 
-    if(i<results.length)
+    if(i<results.length) // si il y'a des propositions qui n'ont pas été affichées (car plus de 6)
     {
         seeAll.classList.remove("inactive");
         qs(".seeAll p").innerHTML = `see all results (${results.length-i})`;
@@ -71,7 +73,7 @@ export function search(input) {
         qs(".seeAll p").addEventListener("click",(e)=>{
             e.stopImmediatePropagation();
             searchBar.select();
-            getMoreResults();
+            getMoreResults(); // cette fontion vas afficher toutes les autres propositions
             seeAll.classList.add("inactive");
         })
 
@@ -80,7 +82,8 @@ export function search(input) {
         seeAll.classList.add("inactive");
     }
 
-    if(results.length==0){
+    if(results.length==0) // si pas de propositions on affiche no results
+    {
         noResults.classList.remove("inactive");
         return;
     } 

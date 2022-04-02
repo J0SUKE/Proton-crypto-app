@@ -5,14 +5,18 @@ import { qs,qsa,fillDataOnpage,createHTMLelement } from "./domUtil.js";
 
 let domain = "https://rest.coinapi.io/v1";
 
-let mykey = "33EA2CA7-62CF-4F42-BE48-E39EF49EFFA9";
-let mykey2 = "F52255F2-C524-4A9D-93CB-D83009F7E1DA";
+let keys = ["ADA14CA8-B2A6-4594-A598-2D0B1DCB467B","FF285EA9-E9A5-40AA-B797-0F2B7661B44D","238E7235-207C-403F-9A4F-DCC5405550BB","59BA3C4B-744E-4B96-98D5-0B3D23311087","FA0EDA4C-C135-4ED4-B197-3773DA2480A4","FE3C3481-8A6B-4619-B3CF-911492CA3BB6","ABEE0115-732D-44FF-9D2A-13D0FB9EB371","ACABB7E9-F091-425B-8291-2EBFF364ECF3","77DBD5E3-BF80-406E-B442-FFD961AA03B7","33EA2CA7-62CF-4F42-BE48-E39EF49EFFA9","F52255F2-C524-4A9D-93CB-D83009F7E1DA"];
+
+
+//let mykey3 = "939FACA6-3FF8-49CA-8672-3CA18A02FA82";
+let mykey4 = "766DB079-A281-4E66-8335-22AA8E2B4550";
+let mykey5 = "B1184719-DA3C-4A05-BD23-722D0CB0A1ED";
 
 
 var myheaders = new Headers();
 myheaders.append("Accept","application/json");
 myheaders.append("Accept-Encoding","deflate, gzip");
-myheaders.append("X-CoinAPI-Key",mykey2);
+myheaders.append("X-CoinAPI-Key",mykey4);
 
 let fetchInit = {
     method:"GET",
@@ -45,38 +49,19 @@ let greentrans="rgba(22, 183, 123,.1)";
 let redOpac="rgb(234, 57, 67)";
 let redtrans="rgba(234, 57, 67,.1)";
 
-
-
-
-let OHCLVperiods = ["1SEC","2SEC","3SEC","4SEC","5SEC","6SEC","10SEC","15SEC","20SEC","30SEC","1MIN","2MIN","3MIN","4MIN","5MIN","6MIN","10MIN","15MIN","20MIN","30MIN","1HRS","2HRS","3HRS","4HRS","6HRS","8HRS","12HRS","1DAY","2DAY","3DAY","5DAY","7DAY","10DAY","1MTH","2MTH","3MTH","4MTH","6MTH","1YRS","2YRS","3YRS","4YRS","5YRS"];
+// les exports servirons dans la partie barre de recherche (dans search.js)
 
 export let icons; // tableau d'objets avec des liens vers les icons dans icons[i].url
-export let assets; // tableau de toutes les cryptos et monnaies
-
-function getAssets(id) {
-    let call;
-    let apiCall = `${domain}/assets`;
-    call = ( id==undefined ? apiCall : `${apiCall}/${id}`);
-    
-    return FETCH(call);
-}
-
-function getIcon(size) {
-    let call = `${domain}/assets/icons/${size}`;
-    return FETCH(call);
-}
-
-function getRateInPeriod(idBase,idQuote,start,end,interval) {
-    let apiCall = `${domain}/exchangerate/${idBase}/${idQuote}/history?time_start=${start}&time_end=${end}&period_id=${interval}`;
-    return FETCH(apiCall);
-}
+export let assets; // tableau de toutes les cryptos , de la forme [{"id":asset_id,"name":name},...]
+export let currentRate; // le prix de la crypto actuelle en dollar  
 
 export function getCryptoIcon(assetId) {
     return icons.filter(element=>element.asset_id==assetId);
 }
 
-export function getAllData(asset_id)
+export function getAllData(asset_id) // la fonction qui vas remplir la page avec les donneées de la crypto asset_id
 {
+    //----on active les loaders
     loaders.forEach(element => {
         element.classList.remove("inactive");
     });
@@ -86,9 +71,11 @@ export function getAllData(asset_id)
     
     getAssets(asset_id)
     .then(a=>{
-        isloading=true;
+        // a est un tableau avec un seul element ,celui de la crypto dont l'id est asset_id
+        
+        isloading=true; // pendant que isloading est true on ne peut pas cliquer sur les boutons 1d 7d 1m 6m  1y
         let loadedIcon =getCryptoIcon(a[0].asset_id)[0].url;
-        currentCrypto = a[0].asset_id;
+        currentCrypto = a[0].asset_id; 
         
         currentRate=a[0].price_usd;
 
@@ -101,11 +88,33 @@ export function getAllData(asset_id)
             volume_1hrs_usd: a[0].volume_1hrs_usd,
             volume_1mth_usd: a[0].volume_1mth_usd
         };
-        return a;
-    }).then((a)=>{
+    }).then(()=>{
         getDataAccordingToPeriod(currentCrypto,currentPeriod);
     })
 }
+
+
+
+function getAssets(id) // retourne une promesse avec pour reponse tout les assets (ou bien celui de l'id)
+{
+    let call;
+    let apiCall = `${domain}/assets`;
+    call = ( id==undefined ? apiCall : `${apiCall}/${id}`);
+    
+    return FETCH(call);
+}
+
+function getIcon(size) //retourne une promesse avec toutes les icones de tout les assets avec la taille spécifiée 
+{
+    let call = `${domain}/assets/icons/${size}`;
+    return FETCH(call);
+}
+
+function getRateInPeriod(idBase,idQuote,start,end,interval) {
+    let apiCall = `${domain}/exchangerate/${idBase}/${idQuote}/history?time_start=${start}&time_end=${end}&period_id=${interval}`;
+    return FETCH(apiCall);
+}
+
 
 
 function getDataAccordingToPeriod(asset_id,period) {
@@ -141,10 +150,11 @@ function getDataAccordingToPeriod(asset_id,period) {
         let prices = a.map(element=>element.rate_close);
         let times = a.map(element=>FormatTimeTochart(element.time_close,currentPeriod));
 
+        // pour pouvoir ecraser l'ancien graph il faut supprimer le canvas dans lequel il est contenu et en recreer un nouveau
         qs("#Chart").remove();
         qs(".graph__section__content").append(createHTMLelement("canvas","",{id:"Chart"},""));
         
-
+        // dans de rares cas il se peut que l'API retourne un tableau vide (bug ? ou juste données indispo)
         if(a.length!=0)
         {
             storedCryptos[currentCrypto].variation = getVariation(prices[prices.length-1],prices[0]);
@@ -158,11 +168,13 @@ function getDataAccordingToPeriod(asset_id,period) {
             storedCryptos[currentCrypto].price_high = 0;
         }
 
+        // la couleur du graph vas dependre de la variation du prix
         if(storedCryptos[currentCrypto].variation>0) draw(prices,times,storedCryptos[currentCrypto].name,greenOpac,greentrans);
         else draw(prices,times,storedCryptos[currentCrypto].name,redOpac,redtrans);
         
     }).then(()=>{
 
+        // remplit les elements du DOM avec les données renvoyées par l'API
         fillDataOnpage(
                 currency,
                 storedCryptos[currentCrypto].icon,
@@ -179,6 +191,7 @@ function getDataAccordingToPeriod(asset_id,period) {
                 );
 
     }).then(()=>{
+        // retire les loaders
         loaders.forEach(element => {
             element.classList.add("inactive");
         });
@@ -186,33 +199,46 @@ function getDataAccordingToPeriod(asset_id,period) {
             element.classList.remove("transparent");
         });
 
-        isloading=false;
+        isloading=false; // le chargemnt et terminé , l'utilisateur peux de nouveau cliquer
     })      
 }
 
-let storedCryptos = {}
-let currentCrypto="BTC";
+let storedCryptos = {}; // vas stocker toutes les donnée sur la crypto actuelle 
+let currentCrypto="BTC";// vas contenir l'id de la crypto actuelle 
 let currentPeriod="1D";
-export let currentRate;
 let now = new Date();
 
 
 let loaders = [qs(".crypto-section__loader") , qs(".graph__section__loader")];
 let dataContainers = [qs(".crypto-section__content") , qs(".graph__section__content")];
 
-getAssets().then(a=>a.filter(element=>element.type_is_crypto && element.price_usd!=undefined && element.volume_1day_usd!=undefined && element.volume_1hrs_usd!=undefined && element.volume_1mth_usd!=undefined).map(element=>({"id":element.asset_id,"name":element.name})))
+function filterAssets(cryptoassets) {
+    // !!!!!!! TRÈS IMPORTANT !!!!!!!!!
+    // il faut filter tout les assets avec des données manquantes 
+    return cryptoassets.filter(element=>
+                                        element.type_is_crypto && 
+                                        element.price_usd!=undefined && 
+                                        element.volume_1day_usd!=undefined && 
+                                        element.volume_1hrs_usd!=undefined && 
+                                        element.volume_1mth_usd!=undefined)
+                                        .map(element=>({"id":element.asset_id,"name":element.name})
+                                )
+}
+
+
+getAssets().then(a=>filterAssets(a))
 .then((a)=>assets=[...a])
 .then(()=>getIcon(40))
 .then(a=>icons=[...a])
 .then(()=>getAllData(currentCrypto))
 
-let periodButtons = qsa(".graph__section__options ul li");
+let periodButtons = qsa(".graph__section__options ul li"); // les boutons ou on selectionne la periode sur le graph
 let isloading=true;
 
 periodButtons.forEach(element => {
     element.addEventListener("click",(e)=>{
         e.stopImmediatePropagation();
-        if(!element.classList.contains("selected") && !isloading)
+        if(!element.classList.contains("selected") && !isloading)//on peut cliquer que si ça ne charge pas + pas sur la periode qui est deja selectionnée
         {
             periodButtons.filter(e=>e!=element).forEach(e => {
                e.classList.remove("selected"); 
