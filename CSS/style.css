@@ -55,10 +55,6 @@ section, .header, footer {
   margin: auto;
 }
 
-header {
-  width: 100%;
-}
-
 .header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -158,7 +154,6 @@ header {
   background: #171924;
   border-radius: 10px;
   padding: 1rem 0;
-  /* width */
 }
 
 .header form menu .search-menu {
@@ -166,8 +161,6 @@ header {
   margin: auto;
   max-height: 300px;
   overflow-y: scroll;
-  /* Track */
-  /* Handle */
 }
 
 .header form menu .search-menu::-webkit-scrollbar {
@@ -275,8 +268,6 @@ header {
 .crypto-section__loader {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
