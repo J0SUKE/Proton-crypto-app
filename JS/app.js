@@ -6,12 +6,13 @@ import { qs,qsa,fillDataOnpage,createHTMLelement } from "./domUtil.js";
 let domain = "https://rest.coinapi.io/v1";
 
 let mykey = "33EA2CA7-62CF-4F42-BE48-E39EF49EFFA9";
+let mykey2 = "F52255F2-C524-4A9D-93CB-D83009F7E1DA";
 
 
 var myheaders = new Headers();
 myheaders.append("Accept","application/json");
 myheaders.append("Accept-Encoding","deflate, gzip");
-myheaders.append("X-CoinAPI-Key",mykey);
+myheaders.append("X-CoinAPI-Key",mykey2);
 
 let fetchInit = {
     method:"GET",

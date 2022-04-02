@@ -318,7 +318,7 @@ header {
 }
 
 .crypto-section__content__left .crypto-name h1 {
-  font-size: 3rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   margin: 0 1rem;
 }
 
@@ -358,7 +358,7 @@ header {
 }
 
 .crypto-section__content__left .crypto-price h1 {
-  font-size: 4rem;
+  font-size: clamp(3rem, 6vw, 4rem);
   font-weight: 700;
 }
 
@@ -513,6 +513,9 @@ header {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+  .crypto-section__content .crypto-section__content__left .crypto-price h1 {
+    margin: 1.5rem 0;
   }
   .crypto-section__content .crypto-section__content__left .ohclv {
     margin: 4vmin 0;

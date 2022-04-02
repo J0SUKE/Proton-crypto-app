@@ -287,7 +287,7 @@ header
                 width: auto;
             }
             h1{
-                font-size: 3rem;
+                font-size: clamp(2rem,5vw,3rem);
                 margin: 0 1rem;
             }
             span{
@@ -316,7 +316,8 @@ header
             align-items: center;
             margin: 1vmin 0;
             h1{
-                font-size: 4rem;
+                font-size: clamp(3rem,6vw,4rem);;
+                
                 font-weight: 700;
             }
             p:nth-child(3)
@@ -445,6 +446,13 @@ header
         flex-direction: column;
         .crypto-section__content__left
         {
+            .crypto-price
+            {
+                h1{
+                    margin: 1.5rem 0;
+                }
+            }
+            
             .ohclv
             {
                 margin: 4vmin 0;
