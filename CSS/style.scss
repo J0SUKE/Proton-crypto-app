@@ -7,8 +7,8 @@ $main-bg-dark : #1B1C22;
 $searchBar-blue:#171924;
 $mid-blue : #323546;
 $color-font-main :white;
-$green-positive : #16B77B;
-$red-negative : #EA3943;
+$green-positive : rgb(22, 183, 123);
+$red-negative : rgb(234, 57, 67);
 $border : #222531;
 $font-blue : #5B7EEC;
 
@@ -250,8 +250,6 @@ header
 {
     position: relative;
 }
-
-
 
 .crypto-section__loader
 {
@@ -631,6 +629,12 @@ header
 .converter
 {
     margin-top: 5vmin;
+    p:first-child
+    {
+        margin: 2rem 0;
+        font-size: 1.5rem;
+        font-weight: 900;
+    }
 
     &__content
     {
@@ -798,6 +802,66 @@ header
     }
   }
   
+.modal-overlay
+{
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    background: rgba(20, 29, 46,.5);
+
+    .modal
+    {
+        width: 90%;
+        max-width: 600px;
+        padding: 2rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-100%);
+        opacity: 0;
+        background: #323546;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+
+        h1{
+            margin: .8rem 0 2rem 0;
+        }
+        p{
+            margin: 1rem 0;
+            line-height: 1.5rem;
+        }
+        a{
+            color: $font-blue;
+        }
+        span{
+            align-self:flex-end ;
+            color: darkgray;
+        }
+    }
+
+    &.active
+    {
+        display: unset;
+        .modal
+        {
+            animation: modal-animation .5s forwards;
+            @keyframes modal-animation {
+                from{
+                    opacity: 0;
+                    transform: translate(-50%,-100%);
+                }to{
+                    opacity: 1;
+                    transform: translate(-50%,-50%);
+                }
+            }
+        }
+    }
+}
+
+
+
 
   .transparent
   {

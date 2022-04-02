@@ -416,7 +416,7 @@ header {
 }
 
 .crypto-section__content__left .crypto-price span[data-evolution="negative"] {
-  background: #EA3943;
+  background: #ea3943;
 }
 
 .crypto-section__content__left .crypto-price span[data-evolution="negative"]::before {
@@ -426,7 +426,7 @@ header {
 }
 
 .crypto-section__content__left .crypto-price span[data-evolution="positive"] {
-  background: #16B77B;
+  background: #16b77b;
 }
 
 .crypto-section__content__left .crypto-price span[data-evolution="positive"]::before {
@@ -739,6 +739,12 @@ header {
   margin-top: 5vmin;
 }
 
+.converter p:first-child {
+  margin: 2rem 0;
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
 .converter__content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -987,6 +993,89 @@ header {
   100% {
     -webkit-transform: translate(24px, 0);
             transform: translate(24px, 0);
+  }
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: rgba(20, 29, 46, 0.5);
+}
+
+.modal-overlay .modal {
+  width: 90%;
+  max-width: 600px;
+  padding: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -100%);
+          transform: translate(-50%, -100%);
+  opacity: 0;
+  background: #323546;
+  border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.modal-overlay .modal h1 {
+  margin: .8rem 0 2rem 0;
+}
+
+.modal-overlay .modal p {
+  margin: 1rem 0;
+  line-height: 1.5rem;
+}
+
+.modal-overlay .modal a {
+  color: #5B7EEC;
+}
+
+.modal-overlay .modal span {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  color: darkgray;
+}
+
+.modal-overlay.active {
+  display: unset;
+}
+
+.modal-overlay.active .modal {
+  -webkit-animation: modal-animation .5s forwards;
+          animation: modal-animation .5s forwards;
+}
+
+@-webkit-keyframes modal-animation {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -100%);
+            transform: translate(-50%, -100%);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes modal-animation {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -100%);
+            transform: translate(-50%, -100%);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
   }
 }
 

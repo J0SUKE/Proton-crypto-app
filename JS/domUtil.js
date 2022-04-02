@@ -42,5 +42,6 @@ export function fillDataOnpage(currency,mainIcon,name,assetID,price,evolution,pe
     qs("p",right[1]).innerHTML = `${currency.symbol}${volume_1d}`;
     qs("p",right[2]).innerHTML = `${currency.symbol}${volume_1mnt}`;
 
+    qs(".converter p:first-child").innerHTML = `${assetID} to ${currency.name} converter`;
     qs(".converter__content input:nth-child(1)").setAttribute("placeholder",assetID);
 }

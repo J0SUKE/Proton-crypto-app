@@ -17,16 +17,10 @@ let mykey10 = "77DBD5E3-BF80-406E-B442-FFD961AA03B7";
 let mykey11 = "33EA2CA7-62CF-4F42-BE48-E39EF49EFFA9";
 
 
-
-let currency={
-    name:"USD",
-    symbol : "$"
-};
-
 var myheaders = new Headers();
 myheaders.append("Accept","application/json");
 myheaders.append("Accept-Encoding","deflate, gzip");
-myheaders.append("X-CoinAPI-Key",mykey8);
+myheaders.append("X-CoinAPI-Key",mykey11);
 
 let fetchInit = {
     method:"GET",
@@ -35,8 +29,32 @@ let fetchInit = {
 
 function FETCH(addr) {
     return fetch(addr,fetchInit)
-    .then(response=>response.json())
+    .then(response=>{
+        if(response.ok)
+        {
+            return response.json();
+        }
+        else if(response.status==429)
+        {
+            document.querySelector(".modal-overlay").classList.add("active")
+        }
+        
+    })
 }
+
+let currency={
+    name:"USD",
+    symbol : "$"
+};
+
+let greenOpac="rgb(22, 183, 123)";
+let greentrans="rgba(22, 183, 123,.1)";
+
+let redOpac="rgb(234, 57, 67)";
+let redtrans="rgba(234, 57, 67,.1)";
+
+
+
 
 let OHCLVperiods = ["1SEC","2SEC","3SEC","4SEC","5SEC","6SEC","10SEC","15SEC","20SEC","30SEC","1MIN","2MIN","3MIN","4MIN","5MIN","6MIN","10MIN","15MIN","20MIN","30MIN","1HRS","2HRS","3HRS","4HRS","6HRS","8HRS","12HRS","1DAY","2DAY","3DAY","5DAY","7DAY","10DAY","1MTH","2MTH","3MTH","4MTH","6MTH","1YRS","2YRS","3YRS","4YRS","5YRS"];
 
@@ -133,7 +151,7 @@ function getDataAccordingToPeriod(asset_id,period) {
 
         qs("#Chart").remove();
         qs(".graph__section__content").append(createHTMLelement("canvas","",{id:"Chart"},""));
-        draw(prices,times);
+        
 
         if(a.length!=0)
         {
@@ -148,7 +166,8 @@ function getDataAccordingToPeriod(asset_id,period) {
             storedCryptos[currentCrypto].price_high = 0;
         }
 
-
+        if(storedCryptos[currentCrypto].variation>0) draw(prices,times,greenOpac,greentrans);
+        else draw(prices,times,redOpac,redtrans);
         
     }).then(()=>{
 
@@ -194,7 +213,6 @@ getAssets().then(a=>a.filter(element=>element.type_is_crypto && element.price_us
 .then(()=>getIcon(40))
 .then(a=>icons=[...a])
 .then(()=>getAllData(currentCrypto))
-//.catch(()=>alert("incomplete data for this crypto"));
 
 let periodButtons = qsa(".graph__section__options ul li");
 let isloading=true;
