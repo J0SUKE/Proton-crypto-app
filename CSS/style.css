@@ -847,6 +847,7 @@ header {
   margin: 1vmin 0;
   display: inline-block;
   position: relative;
+  cursor: pointer;
 }
 
 .footer__right ul li::after {
