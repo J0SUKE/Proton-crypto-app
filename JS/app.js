@@ -166,8 +166,8 @@ function getDataAccordingToPeriod(asset_id,period) {
             storedCryptos[currentCrypto].price_high = 0;
         }
 
-        if(storedCryptos[currentCrypto].variation>0) draw(prices,times,greenOpac,greentrans);
-        else draw(prices,times,redOpac,redtrans);
+        if(storedCryptos[currentCrypto].variation>0) draw(prices,times,storedCryptos[currentCrypto].name,greenOpac,greentrans);
+        else draw(prices,times,storedCryptos[currentCrypto].name,redOpac,redtrans);
         
     }).then(()=>{
 
