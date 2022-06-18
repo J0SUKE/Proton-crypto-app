@@ -16,7 +16,7 @@ let mykey5 = "B1184719-DA3C-4A05-BD23-722D0CB0A1ED";
 var myheaders = new Headers();
 myheaders.append("Accept","application/json");
 myheaders.append("Accept-Encoding","deflate, gzip");
-myheaders.append("X-CoinAPI-Key",mykey4);
+myheaders.append("X-CoinAPI-Key",mykey5);
 
 let fetchInit = {
     method:"GET",
